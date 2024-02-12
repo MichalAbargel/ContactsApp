@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddNewContact">
+    tools:context=".login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,74 +14,58 @@
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="123dp"
+        tools:layout_editor_absoluteY="80dp"
         tools:ignore="MissingConstraints">
 
-        <!-- Profile Image -->
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <!--editText for userName input-->
+        <TextView
+            android:id="@+id/login_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_baseline_account_circle_24" />
+            android:layout_marginTop="100dp"
+            android:text="Hello!"
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
-        <!--         editText for name input-->
         <EditText
-            android:id="@+id/nameEt"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_baseline_text_fields_24"
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
             android:drawablePadding="@dimen/_5sdp"
-            android:hint="Name"
+            android:hint="UserName"
             android:inputType="textPersonName"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/colorTextSecondary"
             android:textColorHint="@color/white"
             android:textSize="@dimen/_14sdp" />
 
-        <!--        editText for phone input-->
+        <!--editText for password input-->
         <EditText
-            android:id="@+id/phoneEt"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_baseline_local_phone_24"
+            android:drawableStart="@drawable/ic_baseline_password_24"
             android:drawablePadding="@dimen/_5sdp"
-            android:hint="Phone"
-            android:inputType="phone"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/colorTextSecondary"
             android:textColorHint="@color/white"
             android:textSize="@dimen/_14sdp" />
 
-        <!--editText for email input-->
-        <EditText
-            android:id="@+id/emailEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawablePadding="@dimen/_5sdp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="@dimen/_10sdp"
-            android:textColor="@color/colorTextSecondary"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/_14sdp" />
-
-        <!--button for saving contact-->
         <Button
-            android:id="@+id/save_contact_btn"
+            android:id="@+id/login_btn"
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:layout_below="@id/welcome_message"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
-            android:text="Save"
+            android:layout_marginTop="50dp"
+            android:text="Login"
             android:textSize="20sp" />
-
 
     </LinearLayout>
 

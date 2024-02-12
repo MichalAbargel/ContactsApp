@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     //view
-    private FloatingActionButton fab;
+    private Button signIn;
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,17 +20,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //initialization
-        fab = findViewById(R.id.fab);
+        signIn = findViewById(R.id.signup_button);
+        login = findViewById(R.id.login_button);
 
-        // add listener
-        fab.setOnClickListener(new View.OnClickListener() {
+        // TODO
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        // TODO
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // move to new activity to add contact
-                Intent intent = new Intent(MainActivity.this,AddNewContact.class);
+                Intent intent = new Intent(MainActivity.this,login.class);
                 intent.putExtra("isEditMode",false);
                 startActivity(intent);
             }
         });
+
     }
 }
