@@ -22,19 +22,6 @@ public class ContactViewModel extends ViewModel {
         this.contacts = dataSource.getAllContacts();
     }
 
-    public Boolean loginUser(User userToSave){
-        if(userToSave != null && this.user == null){
-            this.user = new MutableLiveData<>();
-            User user = dataSource.loginUser(userToSave);
-            if(userToSave != null){
-                this.user.setValue(user);
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
     public LiveData<List<Contact>> getContacts() {
         return contacts;
     }
