@@ -15,10 +15,11 @@ public class ContactViewModel extends ViewModel {
 
     private DataSource dataSource;
     private MutableLiveData<User> user;
-    private MutableLiveData<List<Contact>> contacts;
+    private LiveData<List<Contact>> contacts;
 
-    public ContactViewModel() {
-        dataSource = new DataSource(new RetrofitClient());
+    public ContactViewModel(DataSource dataSource) {
+        this.dataSource = dataSource;
+        this.contacts = dataSource.getAllContacts();
     }
 
     public Boolean loginUser(User userToSave){
@@ -34,32 +35,22 @@ public class ContactViewModel extends ViewModel {
         return false;
     }
 
-    public MutableLiveData<List<Contact>> getContacts() {
-        if (contacts == null) {
-            contacts = new MutableLiveData<>();
-            // TODO replace with this.user.id
-            // List<Contact> data = dataSource.getContacts("123");
-            List<Contact> data = loadContacts();
-            contacts.setValue(data);
+    public LiveData<List<Contact>> getContacts() {
+        return contacts;
+    }
+
+    public void addContact(Contact contact){
+        if(contact != null){
+            dataSource.addContact(contact);
         }
-        return contacts;
     }
-
-    private List<Contact> loadContacts() {
-        List<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact("John Doe"));
-        contacts.add(new Contact("Jane Smith"));
-        contacts.add(new Contact("Alice Johnson"));
-        return contacts;
-    }
-
 
     public void deleteContact(int position) {
         List<Contact> currentContacts = contacts.getValue();
 
         if (currentContacts != null && position >= 0 && position < currentContacts.size()) {
             currentContacts.remove(position);
-            contacts.setValue(currentContacts);
+//            contacts.setValue(currentContacts);
 
             // TODO Update the database by deleting the contact
         }

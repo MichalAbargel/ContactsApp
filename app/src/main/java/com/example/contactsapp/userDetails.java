@@ -9,17 +9,15 @@ import android.os.Bundle;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.contactsapp.adapters.ContactAdapter;
+import com.example.contactsapp.datasource.DataSource;
 import com.example.contactsapp.models.Contact;
 import com.example.contactsapp.viewmodels.ContactViewModel;
+import com.example.contactsapp.viewmodels.ContactsViewModelFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class userDetails extends AppCompatActivity {
@@ -33,7 +31,8 @@ public class userDetails extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
 
-        viewModel = new ViewModelProvider(this).get(ContactViewModel.class);
+        DataSource dataSource = DataSource.getInstance();
+        viewModel = new ViewModelProvider(this, new ContactsViewModelFactory(dataSource)).get(ContactViewModel.class);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,7 +43,6 @@ public class userDetails extends AppCompatActivity {
             @Override
             public void onEditClick(int position) {
                 Toast.makeText(getApplicationContext(), "Edit", Toast.LENGTH_LONG).show();
-                // call viewModel
                 viewModel.editContact(position);
             }
 

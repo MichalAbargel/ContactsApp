@@ -1,6 +1,7 @@
 package com.example.contactsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.contactsapp.viewmodels.ContactViewModel;
+
 public class AddNewContact extends AppCompatActivity {
+    private ContactViewModel viewModel;
     private Button saveContactBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
